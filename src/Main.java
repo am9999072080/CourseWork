@@ -4,7 +4,7 @@ public class Main {
         Employee employee1 = new Employee("Иванов", "Иван", "Иванович", 1, 2_000);
         Employee employee2 = new Employee("Сергеев", "Сергей", "Сергеевич", 2, 2_200);
         Employee employee3 = new Employee("Алексеев", "Алексей", "Алексеевич", 3, 2_500);
-        Employee employee4 = new Employee("Александров", "Александр", "Александрович", 4, 2_300);
+        Employee employee4 = new Employee("Александров", "Александр", "Александрович", 4, 1000);
         Employee employee5 = new Employee("Иванов", "Иван", "Иванович", 5, 2_400);
 
         Employee[] vaults = new Employee[5];
@@ -18,22 +18,33 @@ public class Main {
             System.out.println(vault);
         }
         System.out.println();
-        System.out.println("Сумма затрат в месяц: " + sum(vaults) + "$");
-        System.out.println();
-        System.out.println("Средняя зарплата в месяц: " + aver(vaults) + "$");
-        System.out.println();
-        System.out.println("Сотрудника с минимальной зарплатой: " + min(vaults) + "$");
-        System.out.println();
-        System.out.println("Сотрудника с максимальной зарплатой: " + max(vaults) + "$");
+        System.out.println(sum(vaults) + "$" + " -Сумма затрат в месяц");
+
+        System.out.println(aver(vaults) + "$" + " -Средняя зарплата в месяц");
+
+        System.out.println(min(vaults) + " -Сотрудник с минимальной зарплатой");
+
+        System.out.println(max(vaults) + " -Сотрудник с максимальной зарплатой");
         System.out.println();
         printFio(vaults);
-
 
         int percent = 10; //Значение на величину аргумента в %
         for (Employee vault : vaults) {
             vault.setSalary(vault.getSalary() * percent / 100 + vault.getSalary()); //Проиндексирование зарплаты
             System.out.println(vault);
         }
+        System.out.println();
+        int i = 0;
+        for (Employee vault : vaults) {
+            i++;
+            if (aver(vaults) > vault.getSalary()) {
+                System.out.println(vault + " -Сотрудник с зарплатой меньше числа ");
+            } else {
+
+                System.out.println(vault + " -Сотрудник с зарплатой больше (или равно) числа ");
+            }
+        }
+
     }
 
     public static int sum(Employee[] vaults) {
@@ -52,7 +63,7 @@ public class Main {
             i++;
             sum += vault.getSalary();
         }
-        average = sum / i;
+        average = sum / i; // Среднее значение зарплат
         return average;
     }
 
@@ -80,6 +91,7 @@ public class Main {
         for (Employee vault : vaults) {
             System.out.println(vault.getName() + " " + vault.getMiddleName() + " " + vault.getSurname());
         }
+        System.out.println();
     }
 }
 
