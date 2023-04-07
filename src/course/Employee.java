@@ -66,7 +66,7 @@ public class Employee {
         this.department = department;
     }
 
-    public void setMiddleSalary(int salary) {
+    public void setSalary(int salary) {
         this.salary = salary;
 
     }

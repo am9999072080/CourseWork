@@ -27,23 +27,32 @@ public class Main {
         System.out.println("Сотрудника с максимальной зарплатой: " + max(vaults) + "$");
         System.out.println();
         printFio(vaults);
+
+
+        int percent = 10; //Значение на величину аргумента в %
+        for (Employee vault : vaults) {
+            vault.setSalary(vault.getSalary() * percent / 100 + vault.getSalary()); //Проиндексирование зарплаты
+            System.out.println(vault);
+        }
     }
 
     public static int sum(Employee[] vaults) {
         int totalAmount = 0;
         for (Employee vault : vaults) {
-            totalAmount += vault.getSalary();
+            totalAmount += vault.getSalary();   //Сумма затрат в месяц
         }
         return totalAmount;
     }
 
     public static double aver(Employee[] vaults) {
+        int i = 0;
         double sum = 0;
-        double average = 0;
-        for (Employee vault : vaults) {//использовал цикл for each.
+        double average;
+        for (Employee vault : vaults) {
+            i++;
             sum += vault.getSalary();
         }
-        average = sum / vaults.length;
+        average = sum / i;
         return average;
     }
 
@@ -51,7 +60,7 @@ public class Main {
         Employee maximumSpend = vaults[0];
         for (Employee vault : vaults) {
             if (vault.getSalary() > maximumSpend.getSalary()) {
-                maximumSpend = vault;
+                maximumSpend = vault;   //Сотрудника с максимальной зарплатой
             }
         }
         return maximumSpend;
@@ -61,7 +70,7 @@ public class Main {
         Employee minimumSpend = max(vaults);
         for (Employee vault : vaults) {
             if (vault.getSalary() < minimumSpend.getSalary()) {
-                minimumSpend = vault;
+                minimumSpend = vault;   //сотрудник с минимальной зарплатой
             }
         }
         return minimumSpend;
@@ -73,3 +82,4 @@ public class Main {
         }
     }
 }
+
