@@ -8,8 +8,8 @@ public class Employee {
     private int department;
     private int salary;
 
-    private int id;
-    static int counter = 1;
+    private final int id;
+    public static int count = 0;
 
 
     public Employee(String surname, String name, String middleName, int department, int salary) {
@@ -18,8 +18,8 @@ public class Employee {
         this.middleName = middleName;
         this.department = department;
         this.salary = salary;
-        this.id = counter++;
-
+        count++;
+        this.id = count;
     }
 
     public String getName() {
@@ -44,6 +44,11 @@ public class Employee {
     public int getSalary() {
 
         return salary;
+    }
+
+    public int getId() {
+
+        return id;
     }
 
     public void setName(String name) {
