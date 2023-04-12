@@ -14,15 +14,18 @@ public class Main {
         vaults[3] = employee4;
         vaults[4] = employee5;
 
+        int percent = 10;
+        int salary = 2500;
+
         list(vaults);
         System.out.println();
         printFio(vaults);
-        wageIndexation(vaults);//"после индексации заработной платы"
+        wageIndexation(vaults, percent);//"после индексации заработной платы"
 
         list(vaults);
 
-        minSalary(vaults);
-        maxSalary(vaults);
+        minSalary(vaults, salary);
+        maxSalary(vaults, salary);
     }
 
     private static void list(Employee[] vaults) {
@@ -96,34 +99,34 @@ public class Main {
         System.out.println("Перерасчет заработной платы (в связи с проведенной индексацией на 10%-ов):");
     }
 
-    public static void wageIndexation(Employee[] vaults) {
-        int percent = 10;
+
+    public static void minSalary(Employee[] vaults, int salary) {
+
+        System.out.println();
+        System.out.println("Сотрудники с зарплатой меньше числа");
+        for (Employee vault : vaults) {
+            if (vault != null && vault.getSalary() < salary) {
+                System.out.println(vault);
+
+            }
+        }
+    }
+
+    public static void maxSalary(Employee[] vaults, int salary) {
+        System.out.println();
+        System.out.println("Сотрудники с зарплатой больше числа");
+        for (Employee vault : vaults) {
+            if (vault != null && vault.getSalary() > salary) {
+                System.out.println(vault);
+            }
+        }
+    }
+
+    public static void wageIndexation(Employee[] vaults, int percent) {
         for (Employee vault : vaults) {
             if (vault != null) {
                 vault.setSalary(vault.getSalary() * percent / 100 + vault.getSalary()); //Проиндексирование зарплаты
             }
         }
     }
-
-    public static void minSalary(Employee[] vaults) {
-        System.out.println();
-        System.out.println("Сотрудники с зарплатой меньше числа");
-        for (Employee vault : vaults) {
-            if (vault != null && aver(vaults) < vault.getSalary()) {
-                System.out.println(vault);
-            }
-        }
-    }
-
-    public static void maxSalary(Employee[] vaults) {
-        System.out.println();
-        System.out.println("Сотрудники с зарплатой больше числа");
-        for (Employee vault : vaults) {
-            if (vault != null && aver(vaults) >= vault.getSalary()) {
-                System.out.println(vault);
-            }
-        }
-    }
 }
-
-
